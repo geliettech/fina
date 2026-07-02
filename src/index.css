@@ -38,7 +38,7 @@
   --popover-foreground: rgba(14, 37, 79, 1);
 
   /* Brand */
-  --primary: rgba(21, 80, 137, 1); /* p3 */
+  --primary: rgba(14, 37, 79, 1); 
   --primary-foreground: rgba(255, 255, 255, 1);
 
   --secondary: rgba(97, 197, 142, 1); /* s1 */
@@ -278,12 +278,8 @@
   }
   /* header */
     .nav-active {
-    @apply transition-all duration-500 scale-105 text-primary max-lg:text-primary;
+    @apply transition-all duration-500 scale-105 text-secondary underline;
   }
-  /* START of Hero */
-.hero-img_res {
-    @apply max-lg:-top-40 max-lg:left-[calc(50%-280px)] max-lg:w-290 max-md:-bottom-147.5 max-md:left-[calc(50%-390px)] max-md:top-auto;
-  } 
 
 
 }

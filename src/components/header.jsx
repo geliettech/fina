@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <header className={clsx("fixed top-0 left-0 z-50 w-full text-foreground transition-all duration-500", hasScrolled
-      ? "py-2 bg-background/70 backdrop-blur-md shadow-sm"
+      ? "py-1 bg-background/70 backdrop-blur-md shadow-sm"
       : "py-4 bg-transparent")}>
       <div className="container flex items-center justify-between h-16">
         {/* logo */}
@@ -57,7 +57,7 @@ const Header = () => {
                       spy
                       smooth
                       activeClass="nav-active"
-                      className="base text-foreground capitalize cursor-pointer transition-all duration-500 hover:scale-105 hover:text-primary"
+                      className="base text-foreground capitalize cursor-pointer transition-all duration-500 hover:scale-105 hover:text-secondary hover:underline"
                     >
                       {title}
                     </LinkScroll>

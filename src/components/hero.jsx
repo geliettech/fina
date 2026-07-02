@@ -1,29 +1,45 @@
 import { Element, Link as LinkScroll } from "react-scroll";
-import Button from "../components/Button.jsx";
+import { useNavigate } from "react-router";
+import { Button } from "@/components/ui/button";
+import { Marker } from "./Marker.jsx";
+import { Zap } from 'lucide-react';
+
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+
   return (
-    <section className="relative pt-60 pb-40 max-lg:pt-52 max-lg:pb-36 max-md:pt-36 max-md:pb-32">
+    <section className="relative py-30">
       <Element name="hero">
-        <div className="container flex">
-          {/* <div className=""> */}
-          <div className="relative z-2 max-w-512 max-lg:max-w-388">
-            <div className="caption small-two uppercase text-p3">
-              Finance tracking
+        <div className="container flex flex-row max-lg:flex-col-reverse justify-between max-lg:justify-center items-center">
+          <div className="max-w-512 max-lg:max-w-388">
+            <div className="caption small-two uppercase text-foreground">
+              finance tracking
             </div>
             <h1 className="mb-6 h1 text-p4 uppercase max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
-              Amazingly simple
+              manager & advisor
             </h1>
-            <p className="max-w-440 mb-14 body-1 max-md:mb-10">
-              We designed FINA - Finance tracker to be an easy to use, quick to
-              learn, and surprisingly powerful.
+            <p className="max-w-440 mb-10 body-1 max-md:mb-10">
+              We designed fina - Finance tracker with AI advisor to helps you understand your financial health, receive Financial Advice, and make smarter financial decisions through a secure platform.
             </p>
             <LinkScroll to="features" offset={-100} spy smooth>
-              <Button icon="/images/zap.svg">Try it now</Button>
+              <Button
+                size="lg"
+                className="rounded-full btn base p-4 flex items-center gap-2 relative"
+                aria-label="sign-up"
+                onClick={() => navigate("/sign-up")}
+              >
+                <span className="absolute -left-px">
+                  <Marker fill="currentColor" className="text-secondary size-5 z-10" />
+                </span>
+                <Zap className="text-secondary size-6 z-10" />
+                Try it now
+              </Button>
             </LinkScroll>
           </div>
 
-          <div className="absolute top-12 left-[calc(50%-8px)] w-150 pointer-events-none hero-img_res">
+          <div className="w-150 pointer-events-none">
             <img
               src="/images/hero.png"
               className="size-150 max-lg:h-auto"

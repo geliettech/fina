@@ -63,6 +63,7 @@ const SignIn = () => {
       if (code === "auth/invalid-email") setGeneralError("Invalid email address.");
       else if (code === "auth/user-not-found") setGeneralError("No account found for this email.");
       else if (code === "auth/wrong-password") setGeneralError("Incorrect password.");
+      else if (code === "auth/invalid-credential") setGeneralError("Invalid email or password.");
       else setGeneralError(err.message || "Sign in failed.");
     } finally {
       setLoading(false);
@@ -99,7 +100,12 @@ const SignIn = () => {
   }
 
   return (
-    <div className="auth-card">
+    <div className="">
+      <div className="container flex items-center justify-between min-h-screen bg-background">
+           <div className="">
+            <img src="" alt="Auth Image" />
+           </div>
+    <div className="flex flex-col">
       <h2>Sign In</h2>
 
       <input
@@ -137,6 +143,10 @@ const SignIn = () => {
       </div>
      
     </div>
+      </div>
+     
+    </div>
+  
   );
 };
 

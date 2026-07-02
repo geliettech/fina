@@ -101,7 +101,12 @@ const SignUp = () => {
   }
 
   return (
-    <div className="auth-card">
+  <div className="">
+      <div className="container flex items-center justify-between min-h-screen bg-background">
+           <div className="">
+            <img src="" alt="Auth Image" />
+           </div>
+    <div className="flex flex-col">
       <h2>Sign Up</h2>
 
       <input
@@ -133,6 +138,9 @@ const SignUp = () => {
         Already have an account? 
         <Link to="/sign-in">Sign In</Link>
       </div>
+      
+    </div>
+    </div>
       
     </div>
   );
