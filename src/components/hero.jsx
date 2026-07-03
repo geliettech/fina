@@ -2,7 +2,6 @@ import { Element, Link as LinkScroll } from "react-scroll";
 import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Marker } from "./Marker.jsx";
-import { Zap } from 'lucide-react';
 
 
 const Hero = () => {
@@ -24,6 +23,7 @@ const Hero = () => {
               We designed fina - Finance tracker with AI advisor to helps you understand your financial health, receive Financial Advice, and make smarter financial decisions through a secure platform.
             </p>
             <LinkScroll to="features" offset={-100} spy smooth>
+
               <Button
                 size="lg"
                 className="rounded-full btn base p-4 flex items-center gap-2 relative"
@@ -33,7 +33,11 @@ const Hero = () => {
                 <span className="absolute -left-px">
                   <Marker fill="currentColor" className="text-secondary size-5 z-10" />
                 </span>
-                <Zap className="text-secondary size-6 z-10" />
+                <img
+                  src="/images/zap.svg"
+                  alt="zap"
+                  className="text-secondary size-6 z-10"
+                />
                 Try it now
               </Button>
             </LinkScroll>

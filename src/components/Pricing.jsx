@@ -1,9 +1,10 @@
 import { Element } from "react-scroll";
 import { useState } from "react";
 import clsx from "clsx";
-import CountUp from "react-countup";
 import { plans } from "../constants/index.jsx";
-import Button from "./customBtn.jsx";
+import { Button } from "@/components/ui/button";
+import { Marker } from "./Marker.jsx";
+
 
 const Pricing = () => {
   const [monthly, setMonthly] = useState(false);
@@ -12,20 +13,20 @@ const Pricing = () => {
     <section>
       <Element name="pricing">
         <div className="container">
-          <div className="max-w-960 pricing-head_before relative mx-auto border-l border-r border-s2 bg-s1/50 pb-40 pt-28 max-xl:max-w-4xl max-lg:border-none max-md:pb-32 max-md:pt-16">
+          <div className="max-w-960 pricing-head_before relative mx-auto border-l border-r border-border bg-primary/50 pb-40 pt-28 max-xl:max-w-4xl max-lg:border-none max-md:pb-32 max-md:pt-16">
             <h3 className="h3 max-lg:h4 max-md:h5 z-3 relative mx-auto mb-14 max-w-lg text-center text-p4 max-md:mb-11 max-sm:max-w-sm">
               Flexible pricing for teams of all sizes
             </h3>
 
-            <div className="relative z-4 mx-auto flex w-[375px] rounded-3xl border-[3px] border-s4/25 bg-s1/50 p-2 backdrop-blur-[6px] max-md:w-[310px]">
+            <div className="relative z-4 mx-auto flex w-93.75 rounded-3xl border-[3px] border-border/25 bg-secondary/50 p-2 backdrop-blur-[6px] max-md:w-77.5">
               <button
-                className={clsx("pricing-head_btn", monthly && "text-p4")}
+                className={clsx("pricing-head_btn base-bold", monthly && "text-foreground")}
                 onClick={() => setMonthly(true)}
               >
                 Monthly
               </button>
               <button
-                className={clsx("pricing-head_btn", !monthly && "text-p4")}
+                className={clsx("pricing-head_btn base-bold", !monthly && "text-foreground")}
                 onClick={() => setMonthly(false)}
               >
                 Annual
@@ -79,7 +80,7 @@ const Pricing = () => {
                     alt={plan.title}
                     className={clsx(
                       "object-contain drop-shadow-2xl",
-                      index === 1 ? "size-[120px]" : "size-[88px]",
+                      index === 1 ? "size-30" : "size-22",
                     )}
                   />
                 </div>
@@ -93,7 +94,7 @@ const Pricing = () => {
                   <div
                     className={clsx(
                       "small-2 rounded-20 relative z-2 mx-auto mb-6 border-2 px-4 py-1.5 uppercase",
-                      index === 1 ? "border-p3 text-p3" : "border-p1 text-p1",
+                      index === 1 ? "border-border text-border" : "border-chart-1 text-chart-1",
                     )}
                   >
                     {plan.title}
@@ -103,19 +104,13 @@ const Pricing = () => {
                     <div
                       className={clsx(
                         "h-num flex items-start",
-                        index === 1 ? "text-p3" : "text-p4",
+                        index === 1 ? "text-primary" : "text-primary-foreground",
                       )}
                     >
                       ${" "}
-                      <CountUp
-                        start={plan.priceMonthly}
-                        end={monthly ? plan.priceMonthly : plan.priceYearly}
-                        duration={0.4}
-                        useEasing={false}
-                        preserveValue
-                      />
+                      <span>{monthly ? plan.priceMonthly : plan.priceYearly}</span>
                     </div>
-                    <div className="small-1 relative top-3 ml-1 uppercase">
+                    <div className="small-one relative top-3 ml-1 uppercase">
                       / mo
                     </div>
                   </div>
@@ -123,7 +118,7 @@ const Pricing = () => {
 
                 <div
                   className={clsx(
-                    "body-1 relative z-2 mb-10 w-full border-b-s2 pb-9 text-center text-p4",
+                    "body-1 relative z-2 mb-10 w-full border-b-border pb-9 text-center text-foreground",
                     index === 1 && "border-b",
                   )}
                 >
@@ -147,11 +142,25 @@ const Pricing = () => {
                 </ul>
 
                 <div className="mt-10 flex w-full justify-center">
-                  <Button icon={plan.icon}>Get Started</Button>
+                  <Button
+                    size="lg"
+                    className="rounded-full btn base p-4 flex items-center gap-2 relative"
+                    aria-label=""
+                  >
+                    <span className="absolute -left-px">
+                      <Marker fill="currentColor" className="text-secondary size-5 z-10" />
+                    </span>
+                    <img
+                      src={plan.icon}
+                      alt={plan.title}
+                      className="text-secondary size-6 z-10"
+                    />
+                    Get Started
+                  </Button>
                 </div>
 
                 {index === 1 && (
-                  <p className="small-compact mt-9 text-center text-p3 before:mx-2.5 before:content-['-'] after:mx-2.5 after:content-['-']">
+                  <p className="small-compact mt-9 text-center text-foreground before:mx-2.5 before:content-['-'] after:mx-2.5 after:content-['-']">
                     Limited time offer
                   </p>
                 )}

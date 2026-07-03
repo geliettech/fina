@@ -13,7 +13,7 @@ const Header = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
 
-  const NAV_ITEMS = ["Features", "Pricing", "FAQ", "Download"];
+  const NAV_ITEMS = ["Features", "Pricing", "FAQ",];
 
   useEffect(() => {
     const handleScroll = () => {
