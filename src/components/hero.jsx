@@ -1,4 +1,4 @@
-import { Element, Link as LinkScroll } from "react-scroll";
+import { Element } from "react-scroll";
 import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Marker } from "./Marker.jsx";
@@ -7,23 +7,21 @@ import { Marker } from "./Marker.jsx";
 const Hero = () => {
   const navigate = useNavigate();
 
-
   return (
-    <section className="relative py-30">
+    <section className="relative py-24 sm:py-28 lg:py-36">
       <Element name="hero">
-        <div className="container flex flex-row max-lg:flex-col-reverse justify-between max-lg:justify-center items-center">
-          <div className="max-w-512 max-lg:max-w-388">
-            <div className="caption small-two uppercase text-foreground">
+        <div className="container flex flex-col-reverse gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="w-full lg:w-1/2">
+            <div className="caption small-two uppercase text-foreground mb-4">
               finance tracking
             </div>
-            <h1 className="mb-6 h1 text-p4 uppercase max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
+            <h1 className="mb-6 h1 text-p4 uppercase max-lg:h2 max-md:text-5xl max-md:leading-12">
               manager & advisor
             </h1>
-            <p className="max-w-440 mb-10 body-1 max-md:mb-10">
-              We designed fina - Finance tracker with AI advisor to helps you understand your financial health, receive Financial Advice, and make smarter financial decisions through a secure platform.
+            <p className="max-w-2xl mb-10 body-1">
+              We designed fina - Finance tracker with AI advisor to help you understand your financial health, receive financial advice, and make smarter money decisions through a secure platform.
             </p>
-            <LinkScroll to="features" offset={-100} spy smooth>
-
+            <div className="flex flex-wrap gap-4">
               <Button
                 size="lg"
                 className="rounded-full btn base p-4 flex items-center gap-2 relative"
@@ -40,13 +38,13 @@ const Hero = () => {
                 />
                 Try it now
               </Button>
-            </LinkScroll>
+            </div>
           </div>
 
-          <div className="w-150 pointer-events-none">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <img
               src="/images/hero.png"
-              className="size-150 max-lg:h-auto"
+              className="max-w-full h-auto"
               alt="hero"
             />
           </div>

@@ -9,99 +9,71 @@ const Faq = () => {
 
 
   return (
-    <section>
+    <section className="bg-secondary py-16 sm:py-20">
       <Element name="faq" className="relative">
-        <div className="container relative z-2 py-28">
-
-          {/* FAQ SECTION */}
-          <div>
-            <div>
-
-              <div>
-                <h3 className="h3 max-md:h5 max-w-640 max-lg:max-w-md mb-7 text-p4">
-                  Curiosity didn't kill the cat, it gave it answers.
-                </h3>
-                <p className="body-1 max-lg:max-w-sm">
-                  You've got questions, we've got answers.
-                </p>
-              </div>
-
-              <div className="faq-line_after w-0.5 h-full absolute left-[calc(50%-1px)] top-0 -z-1 bg-primary" />
-            </div>
-
-
-
-            <div className="faq-glow_before relative z-2 border-2 border-border bg-secondary">
-              <div className="container flex gap-10 max-lg:block">
-                <div className="rounded-lg absolute -top-10 left-[calc(50%-40px)] z-4 flex size-20 items-center justify-center border-2 border-secondary bg-primary">
-                  <img src="/images/faq-logo.svg" alt="logo" className="size-1/2" />
-                </div>
-                  
-            <div className="grid grid-cols-1 lg:grid-cols-2 row-span-2 gap-12 py-20 w-full">
-              {faqs.map((faq) => {
-                const active = activeId === faq.id;
-                return (
-                  <div className="relative z-2 mb-16" key={faq.id}>
-                    <div
-                      className="group relative flex cursor-pointer items-center justify-between gap-10 px-7"
-                      onClick={() => setActiveId(active ? null : faq.id)}
-                    >
-                      <div className="flex-1">
-                        <div className="small-compact mb-1.5 text-p3 max-lg:hidden">
-                          {faq.id < 10 ? "0" : ""}
-                          {faq.id}
-                        </div>
-                        <div
-                          className={clsx(
-                            "h6 text-p4 transition-colors duration-500 max-md:flex max-md:min-h-20 max-md:items-center",
-                            active && "max-lg:text-p1"
-                          )}
-                        >
-                          {faq.question}
-                        </div>
-                      </div>
-                      <div
-                        className={clsx(
-                          "faq-icon relative flex size-12 items-center justify-center rounded-full border-2 border-s2 shadow-400 transition-all duration-500 group-hover:border-s4",
-                          active && "before:bg-p1 after:rotate-0 after:bg-p1"
-                        )}
-                      >
-                        <div className="g4 size-11/12 rounded-full shadow-300" />
-                      </div>
-                    </div>
-
-                    {active && (
-                      <div className="body-3 px-7 py-3.5">{faq.answer}</div>
-                    )}
-
-                    <div
-                      className={clsx(
-                        "g5 -bottom-7 -top-7 left-0 right-0 -z-1 rounded-3xl opacity-0 transition-opacity duration-500 absolute",
-                        active && "opacity-100"
-                      )}
-                    >
-                      <div className="g4 absolute inset-0.5 -z-1 rounded-3xl" />
-                      <div className="absolute left-8 top-0 h-0.5 w-40 bg-p1" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-              </div>
-
-            </div>
-
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-primary opacity-80">
+              Frequently asked questions
+            </p>
+            <h2 className="mb-4 text-3xl font-semibold leading-tight text-p4 sm:text-4xl">
+              Curiosity didn't kill the cat, it gave it answers.
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-8 text-p3 sm:text-lg">
+              You've got questions, we've got answers. Explore our most common queries and get the clarity you need.
+            </p>
           </div>
 
 
 
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            {faqs.map((faq) => {
+              const active = activeId === faq.id;
+              return (
+                <div key={faq.id} className="overflow-hidden rounded-[2rem] border border-border bg-surface shadow-sm transition-shadow duration-300 hover:shadow-lg">
+                  <button
+                    type="button"
+                    onClick={() => setActiveId(active ? null : faq.id)}
+                    className="flex w-full flex-col gap-4 px-6 py-6 text-left sm:px-8 sm:py-7"
+                    aria-expanded={active}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0 flex-1">
+                        <div className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary opacity-80 sm:text-sm">
+                          {faq.id < 10 ? `0${faq.id}` : faq.id}
+                        </div>
+                        <h3 className={clsx("text-lg font-semibold leading-7 text-p4 transition-colors duration-300 sm:text-xl", active && "text-p1")}>
+                          {faq.question}
+                        </h3>
+                      </div>
+                      <div
+                        className={clsx(
+                          "relative flex h-12 w-12 items-center justify-center rounded-full border border-s2 transition duration-300",
+                          active ? "bg-p1 border-p1 text-white" : "bg-white"
+                        )}
+                      >
+                        <span className={clsx("block h-5 w-5 rounded-full transition-transform duration-300", active ? "bg-white" : "bg-s4")} />
+                      </div>
+                    </div>
+                  </button>
 
-
-
-          <div className="faq-lin_after absolute left-[calc(50%-1px)] top-0 -z-1 h-full w-0.5 bg-secondary max-lg:hidden" />
+                  {active && (
+                    <div className="border-t border-border px-6 py-5 text-sm leading-7 text-p3 sm:px-8 sm:py-6">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Element>
     </section>
+
+
+
+
+
   );
 };
 

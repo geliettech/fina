@@ -2,9 +2,9 @@ export const features = [
   {
     id: "0",
     icon: "/images/feature-1.png",
-    caption: "Easy integration",
+    caption: "Easy management",
     title: "Work smarter not harder",
-    text: "With fina, tedious tasks are history. Automation and smart processes bring your productivity to new heights. It's like having an extra cup of coffee, but without the jitters.",
+    text: "With fina, poor finance management are history. Finance tracking and smart Advice bring your financial health to new heights. It's like having an extra cup of coffee, but without the jitters.",
     button: {
       icon: "/images/magictouch.svg",
       title: "Watch the demo",
@@ -15,7 +15,7 @@ export const features = [
     icon: "/images/feature-2.png",
     caption: "Secure & trustworthy",
     title: "Sleep easy, we got your back",
-    text: "Your data security is our priority. With state-of-the-art encryption and robust privacy controls, Xora helps keeps your information secure and locked up tighter than Fort Knox.",
+    text: "Your data security is our priority. With state-of-the-art encryption and robust privacy controls, fina keeps your information secure and locked up tighter than Fort Knox.",
     button: {
       icon: "/images/docs.svg",
       title: "Read the docs",
@@ -27,12 +27,12 @@ export const details = [
   {
     id: "0",
     icon: "/images/detail-1.png",
-    title: "AI automated video editing",
+    title: "AI automated Finance Advice",
   },
   {
     id: "1",
     icon: "/images/detail-2.png",
-    title: "Collaborate with your team",
+    title: "Manage your finances with ease",
   },
   {
     id: "2",
@@ -49,45 +49,45 @@ export const details = [
 export const plans = [
   {
     id: "0",
-    title: "Core",
-    priceMonthly: 19,
-    priceYearly: 12,
-    caption: "Best for solo creators",
+    title: "Pro",
+    priceMonthly: 300,
+    priceYearly: 3000,
+    caption: "Most popular plan",
     features: [
-      "100MB Cloud storage",
-      "100+ prompt templates",
-      "5 projects",
-      "24/7 support",
+      "All Pro features",
+      "3 Currency Support",
+      "Limited Financial Advice",
+      "Unlimited Financial Analytics",
     ],
     icon: "/images/circle.svg",
     logo: "/images/plan-1.png",
   },
   {
     id: "1",
-    title: "Overdrive",
-    priceMonthly: 79,
-    priceYearly: 59,
-    caption: "Most popular plan",
+    title: "Basic",
+    priceMonthly: 0,
+    priceYearly: 0,
+    caption: "Free plan",
     features: [
       "All Starter features",
-      "1TB additional storage",
-      "Unlimited projects",
-      "Analytics",
+      "2 Currency Support",
+      "Limited Financial Advice",
+      "Limited Financial Analytics",
     ],
     icon: "/images/triangle.svg",
     logo: "/images/plan-2.png",
   },
   {
     id: "2",
-    title: "Team",
-    priceMonthly: 39,
-    priceYearly: 29,
-    caption: "Exclusively for teams",
+    title: "Premium",
+    priceMonthly: 500,
+    priceYearly: 50000,
+    caption: "Exclusively for Premium users",
     features: [
       "All Overdrive features",
-      "10TB additional storage",
-      "50% off per member",
-      "Real-time collaboration",
+      "8 Currency Support",
+      "Unlimited Financial Advice",
+      "Unlimited Financial Analytics",
     ],
     icon: "/images/hexagon.svg",
     logo: "/images/plan-3.png",
@@ -97,63 +97,63 @@ export const plans = [
 export const faqs = [
   {
     id: "0",
-    question: "How easy is it to setup fina?",
+    question: "How do I get started with Fina?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Sign up, connect your accounts (or import a CSV), and follow the guided onboarding to categorize transactions and set goals. You can be up and running in minutes.",
   },
   {
     id: "1",
-    question: "Can I integrate Xora with other platforms?",
+    question: "Can I connect my bank or other financial accounts?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Yes — Fina supports secure connections to many banks and providers. You can also upload CSVs or connect accounting tools to import transactions.",
   },
   {
     id: "2",
-    question: "How often do you add new content?",
+    question: "Is my financial data secure?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Security is a priority: data is encrypted in transit and at rest, access is protected by Firebase Auth and role-based controls, and we follow best-practice security policies.",
   },
   {
     id: "3",
-    question: "What your refund policy?",
+    question: "Does Fina support multiple currencies?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Yes — multi-currency accounts are supported with automatic conversion and reporting so you can view consolidated balances and reports.",
   },
   {
     id: "4",
-    question: "Do you have corporate plans?",
+    question: "How does the AI financial advice work?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Our AI analyzes your transaction patterns and goals to provide personalized recommendations and budgeting tips. Advice is informational and not a substitute for professional financial advice.",
   },
   {
     id: "5",
-    question: "What happens when I’m out of storage?",
+    question: "Can I invite teammates and manage permissions?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Yes — invite team members by email and assign roles (admin, editor, viewer) so you can collaborate while keeping control of sensitive actions.",
   },
   {
     id: "6",
-    question: "Can I upgrade my plan?",
+    question: "How do billing and plan upgrades work?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Upgrade anytime between monthly and annual plans; upgrades are prorated and you can cancel at any time from the billing settings.",
   },
   {
     id: "7",
-    question: "How do I invite my team?",
+    question: "What if I exceed my storage or transaction limits?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "You can upgrade to a higher plan for more storage and higher transaction limits, or export old data. Contact support if you need a custom enterprise solution.",
   },
   {
     id: "8",
-    question: "Do you offer training for individuals and teams?",
+    question: "Do you integrate with accounting tools like QuickBooks or Xero?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "We provide CSV exports and native integrations for popular accounting platforms. Check the integrations page in the docs for the current list and setup instructions.",
   },
   {
     id: "9",
-    question: "I’m locked out of my account what do I do?",
+    question: "How can I get help or support?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Visit our Help Center and documentation for guides and troubleshooting. For account-specific or urgent issues, contact support via the in-app chat or support email; premium plans include priority support.",
   },
 ];
 

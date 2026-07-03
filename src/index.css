@@ -279,7 +279,7 @@
   }
   /* header */
   .nav-active {
-    @apply transition-all duration-500 scale-105 text-secondary underline;
+    @apply transition-all duration-500 scale-105 active:text-secondary;
   }
   
   .caption {

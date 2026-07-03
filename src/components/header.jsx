@@ -13,7 +13,11 @@ const Header = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
 
-  const NAV_ITEMS = ["Features", "Pricing", "FAQ",];
+  const NAV_ITEMS = [
+    { label: "Features", target: "features" },
+    { label: "Pricing", target: "pricing" },
+    { label: "FAQ", target: "faq" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,18 +52,18 @@ const Header = () => {
             {/* navigation */}
             <nav className="w-full lg:w-auto">
               <ul className="flex max-lg:flex-col gap-12">
-                {NAV_ITEMS.map((title) => (
-                  <li key={title} className="nav-li">
+                {NAV_ITEMS.map(({ label, target }) => (
+                  <li key={target} className="nav-li">
                     <LinkScroll
                       onClick={() => setIsOpen(false)}
-                      to={title}
+                      to={target}
                       offset={-100}
                       spy
                       smooth
                       activeClass="nav-active"
-                      className="base text-foreground capitalize cursor-pointer transition-all duration-500 hover:scale-105 hover:text-secondary hover:underline"
+                      className="base text-foreground capitalize cursor-pointer transition-all duration-500 hover:scale-105 hover:text-secondary"
                     >
-                      {title}
+                      {label}
                     </LinkScroll>
                   </li>
                 ))}
