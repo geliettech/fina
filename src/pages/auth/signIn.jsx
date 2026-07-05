@@ -69,7 +69,7 @@ const SignIn = () => {
       setLoading(false);
     }
   };
-  
+
 
   const signInWithGoogle = async () => {
     try {
@@ -102,51 +102,51 @@ const SignIn = () => {
   return (
     <div className="">
       <div className="container flex items-center justify-between min-h-screen bg-background">
-           <div className="">
-            <img src="" alt="Auth Image" />
-           </div>
-    <div className="flex flex-col">
-      <h2>Sign In</h2>
+        <div className="">
+          <img src="" alt="Auth Image" />
+        </div>
+        <div className="flex flex-col">
+          <h2>Sign In</h2>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={logInEmail}
-        onChange={(e) => setLogInEmail(e.target.value)}
-      />
+          <input
+            type="email"
+            placeholder="Email"
+            value={logInEmail}
+            onChange={(e) => setLogInEmail(e.target.value)}
+          />
 
-      {emailError && <div className="error">{emailError}</div>}
+          {emailError && <div className="error">{emailError}</div>}
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={logInPassword}
-        onChange={(e) => setLogInPassword(e.target.value)}
-      />
+          <input
+            type="password"
+            placeholder="Password"
+            value={logInPassword}
+            onChange={(e) => setLogInPassword(e.target.value)}
+          />
 
-      {passwordError && <div className="error">{passwordError}</div>}
+          {passwordError && <div className="error">{passwordError}</div>}
 
-      {generalError && <div className="error">{generalError}</div>}
+          {generalError && <div className="error">{generalError}</div>}
 
-      <button onClick={signIn} disabled={loading}>
-        {loading ? "Signing in..." : "Sign In"}
-      </button>
+          <button onClick={signIn} disabled={loading}>
+            {loading ? "Signing in..." : "Sign In"}
+          </button>
 
-      <button onClick={signInWithGoogle} disabled={loading}>
-        Sign In With Google
-      </button>
-      <div className="">
-         Don&apos;t have an account?{" "}
-           <Link to="/sign-up" className="sign-up-link">
-            Sign Up
-        </Link>
+          <button onClick={signInWithGoogle} disabled={loading}>
+            Sign In With Google
+          </button>
+          <div className="">
+            Don&apos;t have an account?{" "}
+            <Link to="/sign-up" className="sign-up-link">
+              Sign Up
+            </Link>
+          </div>
+
+        </div>
       </div>
-     
+
     </div>
-      </div>
-     
-    </div>
-  
+
   );
 };
 
