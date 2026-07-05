@@ -339,8 +339,6 @@ Fina helps users understand their financial health, manage spending, track savin
 ---
 
 # 📄 License
-MIT License.
-
----
+...
 
 ---
