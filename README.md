@@ -42,7 +42,7 @@ A modern SaaS application that helps users track income, expenses, savings, inve
 ## Testing and Quality
 - jest
 
-# Version Control system
+## Version Control system
 - Git
 - GitHub
 
@@ -335,5 +335,12 @@ src/
 # 🎯 Project Goal
 
 Fina helps users understand their financial health, manage spending, track savings, monitor investments, create budgets, receive Finance Advice, and make smarter financial decisions through a secure and scalable SaaS platform.
+
+---
+
+# 📄 License
+MIT License.
+
+---
 
 ---
