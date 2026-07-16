@@ -10,7 +10,19 @@ import Dashboard from "./pages/dashboard";
 import NotFound from "./pages/not-found";
 import AppProvider from "./layout/index";
 import RequireAuth from "./layout/requireAuth";
+import { ToastContainer, toast } from 'react-toastify';
 
+
+// function App(){
+//     const notify = () => toast("Wow so easy!");
+
+//     return (
+//       <div>
+//         <button onClick={notify}>Notify!</button>
+//         <ToastContainer />
+//       </div>
+//     );
+//   }
 
 function App() {
   return (

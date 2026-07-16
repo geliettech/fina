@@ -95,7 +95,7 @@ src/
 │   ├── footer
 │   └── marker
 ├── hooks/
-├── config/
+├── services/
 ├── layout/
 ├── lib/
 ├── assets/
