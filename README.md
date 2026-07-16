@@ -20,8 +20,7 @@ A modern SaaS application that helps users track income, expenses, savings, inve
 ## Data & State Management
 - React-hook-form
 - Zod
-- React toastify
-- axios
+- react-toastify
 - Context API
 
 ## BaaS & Database
@@ -92,15 +91,18 @@ src/
 │   └── dashboard/
 ├── components/
 │   ├── ui/
-│   ├── charts/
-│   ├── forms/
-│   └── layout/
+│   ├── header
+│   ├── footer
+│   └── marker
 ├── hooks/
 ├── config/
 ├── layout/
-├── utils/
+├── lib/
 ├── assets/
-└── tests/
+├── App.jsx
+├── index.css
+├── main.jsx
+
 ```
 
 ---
@@ -124,7 +126,6 @@ src/
   - Pro
   - Premium
 - FAQ
-- Call-To-Action
 - Footer
 ---
 
@@ -134,14 +135,14 @@ src/
  /dashboard
 ```
 ### User Authentication
-- Register
+- Sign Up
   - Full Name
   - Email
   - Password
   - Confirm Password
   - Google Sign-In
 - Email Verification
-- Login
+- Sign In
   - Email & Password
   - Google Sign-In
 - Forgot Password
@@ -283,35 +284,26 @@ src/
 ---
 
 # Subscription Plans
-## Basic Plan
-###  Free
-- 20 Transactions
-- 8 Budgets
-- 2 Supported Currencies
-- 4 Recurring Transactions Per Month
-- 90 Days Analytics History
-- 1 Report Export Per Month
-- 3 Financial Advice Per Month
+## Basic
+###  Free Plan
+- All Starter features
+- 2 Currency Support
+- Limited Financial Advice
+- Limited Financial Analytics
 
-## Pro Plan
-### ₦300/Month
-- 120 Transactions
-- 20 Budgets
-- 3 Supported Currencies
-- 8 Recurring Transactions Per Month
-- 366 Days Analytics History
-- 4 Report Exports Per Month
-- 8 Financial Advice Per Month
+## Pro
+### Most popular plan
+- All Pro features
+- 3 Currency Support
+- Limited Financial Advice
+- Unlimited Financial Analytics
 
-## Premium Plan
-### ₦500/Month
-- Unlimited Transactions
-- Unlimited Budgets
-- 8 Supported Currencies
-- Unlimited Recurring Transactions
-- Unlimited Analytics History
-- Unlimited Report Exports
+## Premium
+### Exclusively for Premium users
+- All Overdrive feature
+- 8 Currency Support
 - Unlimited Financial Advice
+- Unlimited Financial Analytics
 
 ---
 

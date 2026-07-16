@@ -81,7 +81,7 @@ export const plans = [
     id: "2",
     title: "Premium",
     priceMonthly: 500,
-    priceYearly: 50000,
+    priceYearly: 5000,
     caption: "Exclusively for Premium users",
     features: [
       "All Overdrive features",
