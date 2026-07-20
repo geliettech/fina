@@ -15,7 +15,7 @@ const Hero = () => {
             <div className="caption small-two uppercase text-foreground mb-4">
               finance tracking
             </div>
-            <h1 className="mb-6 h1 text-p4 uppercase max-lg:h2 max-md:text-5xl max-md:leading-12">
+            <h1 className="mb-6 h1 text-foreground uppercase max-lg:h2 max-md:text-5xl max-md:leading-12">
               manager & advisor
             </h1>
             <p className="max-w-2xl mb-10 body-1">

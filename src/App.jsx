@@ -8,7 +8,7 @@ import SignIn from "./pages/auth/signIn";
 import SignUp from "./pages/auth/signUp";
 import Dashboard from "./pages/dashboard";
 import NotFound from "./pages/not-found";
-import AppProvider from "./layout/index";
+import AppProvider from "./layout/context/index";
 import RequireAuth from "./layout/requireAuth";
 import { ToastContainer, toast } from 'react-toastify';
 

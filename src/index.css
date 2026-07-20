@@ -10,20 +10,7 @@
 /* =========================
    Theme Variables
 ========================= */
-/* Primary - Blue
-  --color-p1: rgba(56, 118, 139, 1);
-  --color-p2: rgba(26, 92, 138, 1);
-  --color-p3: rgba(21, 80, 137, 1);
-  --color-p4: rgba(14, 37, 79, 1);
 
-  /* Secondary - Green 
-  --color-s1: rgba(97, 197, 142, 1);
-  --color-s2: rgba(87, 182, 145, 1);
-  --color-s3: rgba(67, 166, 145, 1);
-  --color-s4: rgba(48, 149, 148, 1);
-
-  --color-gray: rgba(233, 238, 240, 1);
-  */
 :root {
   /* Core */
   --background: rgba(255, 255, 255, 1);
@@ -193,40 +180,10 @@
   --shadow-400:
     0px 16px 24px rgba(0, 0, 0, 0.25), 0px -14px 48px rgba(40, 51, 111, 0.7);
 
-  /* Spacing */
-  --spacing-22: 88px;
-  --spacing-100: 100px;
-  --spacing-330: 330px;
-  --spacing-388: 388px;
-  --spacing-400: 400px;
-  --spacing-440: 440px;
-  --spacing-512: 512px;
-  --spacing-640: 640px;
-  --spacing-960: 960px;
-  --spacing-1230: 1230px;
-
-  /* Percentage spacing */
-  --spacing-1-5: 20%;
-  --spacing-2-5: 40%;
-  --spacing-3-5: 60%;
-  --spacing-4-5: 80%;
-
-  --spacing-3-20: 15%;
-  --spacing-7-20: 35%;
-  --spacing-9-20: 45%;
-  --spacing-11-20: 55%;
-  --spacing-13-20: 65%;
-  --spacing-15-20: 75%;
-  --spacing-17-20: 85%;
-  --spacing-19-20: 95%;
-
   /* Z-index */
   --z-1: 1;
   --z-2: 2;
   --z-4: 4;
-
-  /* Line height */
-  --leading-12: 48px;
 }
 
 /* =========================
@@ -267,28 +224,18 @@
   .container {
     @apply max-w-7xl mx-auto px-6 lg:px-8;
   }
-  /* .container {
-    @apply mx-auto max-w-313 px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
-  } */
+
   .nav-li {
     @apply flex items-center max-lg:justify-center;
   }
-
-  .btn {
-    @apply transform transition-transform duration-300 hover:scale-105 cursor-pointer;
-  }
-  /* header */
   .nav-active {
     @apply transition-all duration-500 scale-105 !text-secondary;
   }
-  
-  .caption {
-    @apply text-[12px] font-bold leading-4 tracking-[0.3em] mb-5 uppercase text-foreground;
-  }
+
   .feature-after {
     @apply after:shadow-100 after:absolute after:right-0 after:top-0 after:h-full after:w-1/2 after:mix-blend-soft-light after:content-[''] max-md:after:hidden;
   }
-    .pricing-head_before {
+  .pricing-head_before {
     @apply before:absolute before:-bottom-44 before:left-1/5 before:h-96 before:w-13/20 before:bg-sidebar-accent/50 before:blur-[200px] before:content-[''];
   }
 
@@ -322,14 +269,14 @@
   .faq-line_after {
     @apply after:absolute after:-top-1.5 after:left-[calc(50%-5px)] after:z-4 after:size-2.5 after:rounded-lg after:border-2 after:border-border after:bg-secondary after:content-[''];
   }
-    .faq-glow_before {
+  .faq-glow_before {
     @apply before:absolute before:left-[calc(50%-160px)] before:-top-40 before:size-80 before:bg-secondary/25 before:mix-blend-soft-light before:blur-[200px] before:content-[''];
   }
 
   .faq-icon {
     @apply before:absolute before:h-0.5 before:w-3 before:bg-sidebar-accent-foreground before:content-[''] after:absolute after:h-0.5 after:w-3 after:rotate-90 after:bg-primary after:transition-all after:duration-500 after:content-[''];
   }
-   /*  START of Footer */
+  /*  START of Footer */
   .legal-after {
     @apply after:absolute after:-right-5 after:top-[calc(50%-1px)] after:h-0.5 after:w-0.5 after:rounded-lg after:bg-primary after:content-[''];
   }
@@ -345,35 +292,12 @@
    utilities 
 ========================= */
 @layer utilities {
-  /* flex system */
-  .flex-50 {
-    flex: 0 0 50%;
+  .btn {
+    @apply transform transition-transform duration-300 hover:scale-105 cursor-pointer;
   }
-
-  .flex-320 {
-    flex: 1px 0 320px;
+  .caption {
+    @apply text-[12px] font-bold leading-4 tracking-[0.3em] mb-5 uppercase text-foreground;
   }
-
-  .flex-300 {
-    flex: 0 0 300px;
-  }
-
-  .flex-540 {
-    flex: 0 0 540px;
-  }
-
-  .flex-280 {
-    flex: 0 0 280px;
-  }
-
-  .flex-256 {
-    flex: 0 0 256px;
-  }
-
-  .flex-100 {
-    flex: 0 0 100%;
-  }
-  /* START of Typography */
   .h-num {
     @apply font-heading text-[72px] font-bold leading-21;
   }
@@ -396,27 +320,15 @@
   .h6 {
     @apply text-[24px] font-medium leading-9;
   }
-  .base-bold {
-    @apply text-[16px] font-bold leading-6;
-  }
-
-  .base {
-    @apply text-[16px] font-medium leading-6;
-  }
   .base-small {
     @apply text-[14px] font-semibold leading-4.5 tracking-[0.03em];
   }
-
-  .body-one {
-    @apply text-[22px] leading-9;
+  .base {
+    @apply text-[16px] font-medium leading-6;
   }
 
-  .body-two {
-    @apply text-[18px] font-semibold leading-8;
-  }
-
-  .body-three {
-    @apply text-[16px] leading-7 tracking-[0.02em];
+  .base-bold {
+    @apply text-[16px] font-bold leading-6;
   }
 
   .small-one {
@@ -429,29 +341,15 @@
   .small-compact {
     @apply text-[12px] font-semibold leading-4.5 tracking-[0.03em];
   }
-  /* START of Header */
-  /* 
 
-  .sidebar-before {
-    @apply max-lg:before:absolute max-lg:before:-right-64 max-lg:before:top-2/5 max-lg:before:h-440 max-lg:before:w-63 max-lg:before:bg-s4 max-lg:before:blur-[200px] max-lg:before:content-[''];
-  } */
-
-  /* END of Header */
-
-  /*START of Custom Button*/
-  /* .inner-before {
-    @apply before:g7 before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-500 before:content-[''];
+  .body-1 {
+    @apply text-[22px] leading-9;
   }
 
-  .glow-before {
-    @apply before:g8 before:absolute before:left-2/5 before:top-0 before:z-4 before:h-0.5 before:w-3/5 before:opacity-0 before:transition-all before:duration-500 before:content-[''] group-hover:before:left-4 group-hover:before:opacity-40;
+  .body-2 {
+    @apply text-[18px] font-semibold leading-8;
   }
-
-  .glow-after {
-    @apply after:g8 after:absolute after:bottom-0 after:left-4 after:z-4 after:h-0.5 after:w-7/20 after:opacity-0 after:transition-all after:duration-500 after:content-[''] group-hover:after:left-3/5 group-hover:after:opacity-40;
-  } */
-
-  /*END of Custom Button*/
-  
- 
+  .body-3 {
+    @apply text-[16px] leading-7 tracking-[0.02em];
+  }
 }

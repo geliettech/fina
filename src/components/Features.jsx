@@ -27,10 +27,10 @@ const Features = () => {
                 </div>
 
                 <p className="caption mb-5">{feature.caption}</p>
-                <h2 className="mb-6 h3 text-p4 max-md:h5">
+                <h2 className="mb-6 h3 text-foreground max-md:h5">
                   {feature.title}
                 </h2>
-                <p className="mb-10 body-one max-md:body-3">{feature.text}</p>
+                <p className="mb-10 body-1 max-md:body-3">{feature.text}</p>
                 <Button
                   size="lg"
                   className="rounded-full btn base p-4 flex items-center gap-2 relative"
