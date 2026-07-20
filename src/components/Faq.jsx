@@ -16,10 +16,10 @@ const Faq = () => {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-primary opacity-80">
               Frequently asked questions
             </p>
-            <h2 className="mb-4 text-3xl font-semibold leading-tight text-p4 sm:text-4xl">
+            <h2 className="mb-4 text-3xl font-semibold leading-tight text-primary sm:text-4xl">
               Curiosity didn't kill the cat, it gave it answers.
             </h2>
-            <p className="mx-auto max-w-2xl text-base leading-8 text-p3 sm:text-lg">
+            <p className="mx-auto max-w-2xl text-base leading-8 text-primary sm:text-lg">
               You've got questions, we've got answers. Explore our most common queries and get the clarity you need.
             </p>
           </div>
@@ -42,23 +42,23 @@ const Faq = () => {
                         <div className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary opacity-80 sm:text-sm">
                           {faq.id < 10 ? `0${faq.id}` : faq.id}
                         </div>
-                        <h3 className={clsx("text-lg font-semibold leading-7 text-p4 transition-colors duration-300 sm:text-xl", active && "text-p1")}>
+                        <h3 className={clsx("text-lg font-semibold leading-7 text-primary transition-colors duration-300 sm:text-xl", active && "text-sidebar-primary")}>
                           {faq.question}
                         </h3>
                       </div>
                       <div
                         className={clsx(
                           "relative flex h-12 w-12 items-center justify-center rounded-full border border-s2 transition duration-300",
-                          active ? "bg-p1 border-p1 text-white" : "bg-white"
+                          active ? "bg-sidebar-primary border-sidebar-primary text-primary-foreground" : "bg-background"
                         )}
                       >
-                        <span className={clsx("block h-5 w-5 rounded-full transition-transform duration-300", active ? "bg-white" : "bg-s4")} />
+                        <span className={clsx("block h-5 w-5 rounded-full transition-transform duration-300", active ? "bg-background" : "bg-chart-4")} />
                       </div>
                     </div>
                   </button>
 
                   {active && (
-                    <div className="border-t border-border px-6 py-5 text-sm leading-7 text-p3 sm:px-8 sm:py-6">
+                    <div className="border-t border-border px-6 py-5 text-sm leading-7 text-foreground sm:px-8 sm:py-6">
                       {faq.answer}
                     </div>
                   )}

@@ -1,5 +1,5 @@
-import { AuthProvider } from "../layout/context/authProvider";
-import { ThemeProvider } from "../layout/context/themeProvider";
+import { AuthProvider } from "./authProvider";
+import { ThemeProvider } from "./themeProvider";
 
 
 function AppProvider({children}) {
