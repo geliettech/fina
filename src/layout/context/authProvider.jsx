@@ -1,38 +1,52 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import { signOut } from "firebase/auth"
-import { auth } from "../../services/firebase"
+import { signOutUser } from "@/services/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/services/firebase";
+import { useEffect } from "react";
+
 
 
 const AuthContext = createContext(null);
 
+const normalizeUser = (currentUser) => {
+  if (!currentUser) return null;
+
+  return {
+    ...currentUser,
+    name: currentUser.displayName || currentUser.fullName || "",
+    profilePic: currentUser.photoURL || currentUser.profilePic || "",
+    userID: currentUser.uid || currentUser.userID || "",
+    isAuth: true,
+  };
+};
+
 export const AuthProvider = ({ children }) => {
-  const storedUser = JSON.parse(localStorage.getItem("auth") || "null");
-  const [user, setUser] = useState(storedUser);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
 
-  const login = (userData) => {
-    setUser(userData);
-  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(normalizeUser(currentUser));
+    });
+
+    return unsubscribe;
+  }, []);
 
 
   const logout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-      navigate("/");
-      localStorage.clear();
-    } catch (err) {
-      console.error(err);
-    }
+    await signOutUser();
+
+    setUser(null);
+    navigate("/");
   };
+
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        login,
         logout,
       }}
     >

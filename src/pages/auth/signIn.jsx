@@ -1,154 +1,210 @@
 import { useState } from "react";
-import { auth, googleProvider } from "../../services/firebase";
-import { Link, Navigate, useNavigate } from "react-router";
-import { useGetUserInfo } from "../../hooks/useGetUserInfo";
-import { useAuth } from "../../layout/context/authProvider";
-
+import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, useNavigate } from "react-router";
+import { AuthLayout } from "@/layout/dashboard/authLayout";
+import { Button } from "@/components/ui/button";
+import { CardAction } from "@/components/ui/card";
 import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import {
+  signIn,
+  signInWithGoogle,
+  forgotPassword,
+} from "@/services/auth";
+import { toast } from "react-toastify";
 
-const SignIn = () => {
-  const navigate = useNavigate();
-  const { isAuth } = useGetUserInfo();
-  const authContext = useAuth();
+// Validation Schema
+const schema = z.object({
+  email: z
+    .string()
+    .email("Please enter a valid email address"),
 
-  const [logInEmail, setLogInEmail] = useState("");
-  const [logInPassword, setLogInPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [generalError, setGeneralError] = useState("");
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters long"),
+});
+
+
+const SignInPage = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const signIn = async () => {
-    // reset errors
-    setEmailError("");
-    setPasswordError("");
-    setGeneralError("");
 
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(logInEmail)) {
-      setEmailError("Please enter a valid email address.");
-      return;
-    }
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-    if (!logInPassword) {
-      setPasswordError("Please enter your password.");
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const result = await signInWithEmailAndPassword(
-        auth,
-        logInEmail,
-        logInPassword
-      );
 
-      const authInfo = {
-        userID: result.user.uid,
-        email: result.user.email,
-        name: result.user.displayName || "",
-        profilePic: result.user.photoURL || "",
-        isAuth: true,
-      };
+      await signIn(data.email, data.password);
 
-      localStorage.setItem("auth", JSON.stringify(authInfo));
-      authContext.login(authInfo);
+      toast.success("Sign-in successfully, Welcome Back!");
       navigate("/dashboard");
-    } catch (err) {
-      console.error("signIn error:", err);
-      const code = err?.code || "unknown";
-      if (code === "auth/invalid-email") setGeneralError("Invalid email address.");
-      else if (code === "auth/user-not-found") setGeneralError("No account found for this email.");
-      else if (code === "auth/wrong-password") setGeneralError("Incorrect password.");
-      else if (code === "auth/invalid-credential") setGeneralError("Invalid email or password.");
-      else setGeneralError(err.message || "Sign in failed.");
+
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+      form.reset();
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+
+      await signInWithGoogle();
+
+      toast.success("Signed in successfully!");
+
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleForgotPassword = async () => {
+    const email = form.getValues("email");
 
-  const signInWithGoogle = async () => {
+    if (!email) {
+      toast.error("Please enter your email first.");
+      return;
+    }
+
     try {
-      setLoading(true);
-      const result = await signInWithPopup(auth, googleProvider);
+      await forgotPassword(email);
 
-      const authInfo = {
-        userID: result.user.uid,
-        name: result.user.displayName,
-        email: result.user.email,
-        profilePic: result.user.photoURL,
-        isAuth: true,
-      };
-
-      localStorage.setItem("auth", JSON.stringify(authInfo));
-      authContext.login(authInfo);
-      navigate("/dashboard");
-    } catch (err) {
-      console.error(err);
-      setGeneralError(err.message || "Sign in failed.");
-    } finally {
-      setLoading(false);
+      toast.success("Password reset email sent.");
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
-  if (isAuth) {
-    return <Navigate to="/dashboard" />;
-  }
 
   return (
-    <div className="">
-      <div className="container flex items-center justify-between min-h-screen bg-background">
-        <div className="">
-          <img src="" alt="Auth Image" />
-        </div>
-        <div className="flex flex-col">
-          <h2>Sign In</h2>
+    <AuthLayout
+      title="Sign In"
+      description="Enter your details to sign in to your account"
+      imgTitle='Welcome back' imgSubtitle='Pick up where you left off and keep your finances on track.'
+      footer={
+        <>
+          <Button
+            type="submit" size="lg"
+            form="signin-form"
+            className="w-full"
+            disabled={loading}
+          >
+            {loading ? "signing in..." : "Sign In"}
+          </Button>
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={logInEmail}
-            onChange={(e) => setLogInEmail(e.target.value)}
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            size="lg"
+            disabled={loading}
+            onClick={handleGoogleSignIn}
+          >
+            {loading ? "Signing in..." : "Continue with Google"}
+          </Button>
+
+          <CardAction className="flex items-center gap-2">
+            <small>Don't have an account?</small>
+
+            <Button variant="link" asChild>
+              <Link to="/sign-up">Sign Up</Link>
+            </Button>
+          </CardAction>
+        </>
+      }
+    >
+      <form
+        id="signin-form"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col space-y-4"
+      >
+        <FieldGroup>
+
+          {/* Email */}
+          <Controller
+            name="email"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.email}>
+                  Email
+                </FieldLabel>
+
+                <Input
+                  {...field}
+                  id={field.email}
+                  type="email"
+                  placeholder="johndoe@example.com"
+                  autoComplete="email"
+                  aria-invalid={fieldState.invalid}
+                />
+
+                {fieldState.error && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
           />
 
-          {emailError && <div className="error">{emailError}</div>}
+          {/* Password */}
+          <Controller
+            name="password"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.password}>
+                  Password
+                </FieldLabel>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={logInPassword}
-            onChange={(e) => setLogInPassword(e.target.value)}
+                <Input
+                  {...field}
+                  id={field.password}
+                  type="password"
+                  placeholder="********"
+                  autoComplete="new-password"
+                  aria-invalid={fieldState.invalid}
+                />
+
+                {fieldState.error && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
           />
-
-          {passwordError && <div className="error">{passwordError}</div>}
-
-          {generalError && <div className="error">{generalError}</div>}
-
-          <button onClick={signIn} disabled={loading}>
-            {loading ? "Signing in..." : "Sign In"}
-          </button>
-
-          <button onClick={signInWithGoogle} disabled={loading}>
-            Sign In With Google
-          </button>
-          <div className="">
-            Don&apos;t have an account?{" "}
-            <Link to="/sign-up" className="sign-up-link">
-              Sign Up
-            </Link>
+          <div className="flex justify-end">
+            <Button
+              type="button"
+              variant="link"
+              className="px-0"
+              onClick={handleForgotPassword}
+            >
+              Forgot Password?
+            </Button>
           </div>
-
-        </div>
-      </div>
-
-    </div>
-
+        </FieldGroup>
+      </form>
+    </AuthLayout>
   );
 };
 
-export default SignIn;
-
+export default SignInPage;

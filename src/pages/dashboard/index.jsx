@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useAddTransactions } from "../../hooks/useAddTransactions"
 import { useGetTransactions } from "../../hooks/useGetTransactions"
 import { useAuth } from "../../layout/context/authProvider";
-import { useNavigate } from "react-router";
 
 
 
@@ -10,8 +9,7 @@ const Dashboard = () => {
   const { addTransactions } = useAddTransactions()
   const { transactions } = useGetTransactions()
 
-const { logout, user } = useAuth();
-    const navigate = useNavigate()
+  const { logout, user } = useAuth();
 
 
   const [description, setDescription] = useState("")
@@ -36,10 +34,9 @@ const { logout, user } = useAuth();
   // Sign Out
   const logOut = async () => {
     await logout();
-    navigate("/");
   };
 
-  
+
   const income = transactions
     .filter(totalIncome => totalIncome.transactionType === "income")
     .reduce((acc, totalIncome) => acc + Number(totalIncome.transactionAmount), 0);

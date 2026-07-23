@@ -3,32 +3,22 @@ import {
   Routes,
   Route,
 } from "react-router";
-import LandingPage from "./pages/landing";
-import SignIn from "./pages/auth/signIn";
-import SignUp from "./pages/auth/signUp";
-import Dashboard from "./pages/dashboard";
-import NotFound from "./pages/not-found";
-import AppProvider from "./layout/context/index";
-import RequireAuth from "./layout/requireAuth";
-import { ToastContainer, toast } from 'react-toastify';
+import LandingPage from "@/pages/landing";
+import SignInPage from "@/pages/auth/signIn";
+import SignUpPage from "@/pages/auth/signUp";
+import Dashboard from "@/pages/dashboard";
+import NotFound from "@/pages/not-found";
+import AppProvider from "@/layout/context/appProvider";
+import ProtectRoute from "@/hooks/useRoute";
+import { ToastContainer } from 'react-toastify';
 
-
-// function App(){
-//     const notify = () => toast("Wow so easy!");
-
-//     return (
-//       <div>
-//         <button onClick={notify}>Notify!</button>
-//         <ToastContainer />
-//       </div>
-//     );
-//   }
 
 function App() {
   return (
     <Router>
       <AppProvider>
         <div className="App">
+          <ToastContainer />
           <Routes>
             <Route
               path="/"
@@ -36,18 +26,18 @@ function App() {
             />
             <Route
               path="/sign-in"
-              element={<SignIn />}
+              element={<SignInPage />}
             />
             <Route
               path="/sign-up"
-              element={<SignUp />}
+              element={<SignUpPage />}
             />
             <Route
               path="/dashboard"
               element={
-                <RequireAuth>
+                <ProtectRoute>
                   <Dashboard />
-                </RequireAuth>
+                </ProtectRoute>
               }
             />
             <Route
