@@ -6,8 +6,8 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../services/firebase";
-import { useGetUserInfo } from "./useGetUserInfo";
+import { db } from "@/services/firebase";
+import { useGetUserInfo } from "@/hooks/useGetUserInfo";
 
 export const useGetTransactions = () => {
   const [transactions, setTransactions] = useState([]);

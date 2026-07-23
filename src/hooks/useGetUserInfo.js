@@ -1,12 +1,13 @@
+import { useAuth } from "@/layout/context/authProvider";
 
 export const useGetUserInfo = () => {
-  const userInfo = JSON.parse(localStorage.getItem("auth") || "null");
+  const { user } = useAuth();
 
   return {
-    name: userInfo?.name || "",
-    profilePic: userInfo?.profilePic || "",
-    email: userInfo?.email || "",
-    userID: userInfo?.userID || "",
-    isAuth: userInfo?.isAuth || false,
+    name: user?.name || user?.displayName || user?.fullName || "",
+    profilePic: user?.profilePic || user?.photoURL || "",
+    email: user?.email || "",
+    userID: user?.userID || user?.uid || "",
+    isAuth: Boolean(user),
   };
 };

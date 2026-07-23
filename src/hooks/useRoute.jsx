@@ -1,11 +1,11 @@
 import { Navigate, useLocation } from "react-router";
-import { useAuth } from "../layout/context/authProvider";
+import { useAuth } from "@/layout/context/authProvider";
 
-const RequireAuth = ({ children }) => {
+const ProtectRoute = ({ children }) => {
   const location = useLocation();
   const { user } = useAuth();
 
-  if (!user?.isAuth) {
+  if (!user) {
     return (
       <Navigate
         to="/sign-in"
@@ -18,4 +18,4 @@ const RequireAuth = ({ children }) => {
   return children;
 };
 
-export default RequireAuth;
+export default ProtectRoute;
